@@ -1,0 +1,32 @@
+{
+  "name": "lei-call",
+  "version": "0.0.1",
+  "description": "call",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha -t 5000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/leizongmin/node-lei-call.git"
+  },
+  "keywords": [
+    "call",
+    "async",
+    "hook"
+  ],
+  "author": "Zongmin Lei <leizongmin@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leizongmin/node-lei-call/issues"
+  },
+  "homepage": "https://github.com/leizongmin/node-lei-call",
+  "devDependencies": {
+    "should": "~3.3.0",
+    "mocha": "~1.18.2"
+  },
+  "dependencies": {
+    "debug": "~0.8.0",
+    "lei-pipe": "0.0.1"
+  }
+}
