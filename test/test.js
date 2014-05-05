@@ -164,4 +164,33 @@ describe('lei-call', function () {
     });
   });
 
+  it('#error - 1', function (done) {
+    var call = createCall();
+    call.register('test', function (params, callback) {
+      callback(new Error('Error 1'));
+    });
+    call('test', function (err, data) {
+      should.notEqual(err, null);
+      err.should.instanceof(Error);
+      should.notEqual(err.toString().indexOf('Error 1'), -1);
+      done();
+    });
+  });
+
+  it('#error - 2', function (done) {
+    var call = createCall();
+    call.register('test', function (params, callback) {
+      callback(null, params);
+    });
+    call.after('test', function (params, callback) {
+      callback(new Error('Error 2'));
+    });
+    call('test', function (err, data) {
+      should.notEqual(err, null);
+      err.should.instanceof(Error);
+      should.notEqual(err.toString().indexOf('Error 2'), -1);
+      done();
+    });
+  });
+
 });
