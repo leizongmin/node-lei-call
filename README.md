@@ -16,11 +16,15 @@ call.register('say_hello', function (params, callback) {
 
 // 注册hook，格式：函数名称:before|after
 // 具体用法可参考lei-pipe模块
-call.hook('say_hello:before', function (params, next, end) {
+call.before('say_hello', {
+  name: 'hook name',
+  before: ['xxx'],
+  after: ['xxx']
+}, function (params, next, end) {
   console.log('before');
   next();
 });
-call.hook('say_hello:after', function (params, next, end) {
+call.after('say_hello', function (params, next, end) {
   console.log('after');
 });
 
