@@ -17,9 +17,9 @@ call.register('say_hello', function (params, callback) {
 // 注册hook，格式：函数名称:before|after
 // 具体用法可参考lei-pipe模块
 call.before('say_hello', {
-  name: 'hook name',
-  before: ['xxx'],
-  after: ['xxx']
+  name: 'hook name',  // hook名称，可选
+  before: ['xxx'],    // 指定在哪些hook之前运行，可选
+  after: ['xxx']      // 指定在哪些hook之后运行，可选
 }, function (params, next, end) {
   console.log('before');
   next();
