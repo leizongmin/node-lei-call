@@ -1,6 +1,6 @@
 {
   "name": "lei-call",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "call",
   "main": "lib/index.js",
   "scripts": {
