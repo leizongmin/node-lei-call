@@ -164,6 +164,47 @@ describe('lei-call', function () {
     });
   });
 
+  it('#before params', function (done) {
+    var call = createCall();
+    call.register('test', function (params, callback) {
+      callback(null, params + 'test');
+    });
+    call.before('test', {name: 'hook1', after: ['hook3']}, function (params, callback) {
+      callback(null, params + '1');
+    });
+    call.before('test', {name: 'hook2'}, function (params, callback) {
+      callback(null, params + '2');
+    });
+    call.before('test', {name: 'hook3', after: ['hook2']}, function (params, callback) {
+      callback(null, params + '3');
+    });
+    call.before('test', {name: 'hook4'}, function (params, callback) {
+      callback(null, params + '4');
+    });
+    call.after('test', {name: 'hook5', }, function (params, callback, end, data2) {
+      should.equal(data2, '!');
+      callback(null, params + '5');
+    });
+    call.after('test', {name: 'hook6', after: ['hook5']}, function (params, callback, end, data2) {
+      should.equal(data2, '!');
+      callback(null, params + '6');
+    });
+    call.after('test', {name: 'hook7', before: ['hook5']}, function (params, callback, end, data2) {
+      should.equal(data2, '!');
+      callback(null, params + '7');
+    });
+    call.after('test', {name: 'hook8', before: ['hook7']}, function (params, callback, end, data2) {
+      should.equal(data2, '!');
+      callback(null, params + '8');
+    });
+    call('test', '!', function (err, data, data2) {
+      should.equal(err, null);
+      should.equal(data, '!2314test8756');
+      should.equal(data2, '!');
+      done();
+    });
+  });
+
   it('#error - 1', function (done) {
     var call = createCall();
     call.register('test', function (params, callback) {

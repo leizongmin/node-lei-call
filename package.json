@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "debug": "~0.8.0",
-    "lei-pipe": "0.0.1",
+    "lei-pipe": "0.0.2",
     "uuid": "^1.4.1"
   }
 }
