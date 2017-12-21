@@ -1,6 +1,8 @@
 node-lei-call
 =============
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/leizongmin/node-lei-call.svg)](https://greenkeeper.io/)
+
 支持Hook的函数集合管理
 
 ```JavaScript
